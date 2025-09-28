@@ -1,5 +1,8 @@
 # Order Book Aggregator
 
+[![build](https://github.com/arttet/order-book-aggregator/actions/workflows/build.yml/badge.svg)](https://github.com/arttet/order-book-aggregator/actions/workflows/build.yml)
+[![codecov](https://codecov.io/gh/arttet/order-book-aggregator/graph/badge.svg?token=OMRV68FALD)](https://codecov.io/gh/arttet/order-book-aggregator)
+
 Backend Challenge: Order Book Aggregator
 
 ## Installation
@@ -42,10 +45,16 @@ options:
 $ make
 ▸▸▸ Development commands ◂◂◂
 help:                   Show this help
-venv:                   Create a Virtual Environment
-deps:                   Install Dependencies
-fmt:                    Format Code
-lint:                   Lint Code
+venv:                   Create a virtual environment
+deps:                   Install dependencies
+audit:                  Audit dependencies
+fmt:                    Format code
+lint:                   Lint code
+build:                  Build the Python package distribution (wheel/sdist)
 test:                   Run tests with coverage
-run:                    Run a Script
+bench:                  Run benchmarks
+install:                Install the project in development mode
+run:                    Run a script
+cli:                    Run a CLI script
+clean:                  Remove generated artifacts
 ```
