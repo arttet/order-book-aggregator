@@ -5,10 +5,6 @@ from order_book_aggregator.adapters import (
     fetch_gemini_orderbook,
 )
 
-def setup_module():
-    fetch_coinbase_orderbook.disable_rate_limit()
-    fetch_gemini_orderbook.disable_rate_limit()
-
 
 def test_benchmark_fetch_coinbase_orderbook(benchmark):
     loop = asyncio.new_event_loop()
