@@ -11,35 +11,28 @@ from order_book_aggregator.domain import Order, OrderBook, OrderBookSide
 def async_rate_limiter(min_interval: float):
     def decorator(func: Callable) -> Callable:
         last_call_time = [0.0]
-        interval = [min_interval]
 
         @wraps(func)
         async def wrapper(*args, **kwargs):
-            if interval[0] > 0:
-                current_time = time.monotonic()
-                elapsed = current_time - last_call_time[0]
+            current_time = time.monotonic()
+            elapsed = current_time - last_call_time[0]
 
-                if elapsed < interval[0]:
-                    func_name = getattr(func, "__name__", "unknown_function")
-                    wait_time = min_interval - elapsed
-                    raise Exception(
-                        f"Rate limit exceeded for {func_name}. "
-                        f"Must wait {wait_time:.2f} more seconds."
-                    )
+            if elapsed < min_interval:
+                func_name = getattr(func, "__name__", "unknown_function")
+                wait_time = min_interval - elapsed
+                raise Exception(
+                    f"Rate limit exceeded for {func_name}. "
+                    f"Must wait {wait_time:.2f} more seconds."
+                )
 
-                last_call_time[0] = current_time
+            last_call_time[0] = current_time
 
             return await func(*args, **kwargs)
 
         def reset_rate_limit():
             last_call_time[0] = 0.0
 
-        def disable_rate_limit():
-            interval[0] = 0.0
-
-
         wrapper.reset_rate_limit = reset_rate_limit
-        wrapper.disable_rate_limit = disable_rate_limit
 
         return wrapper
 
