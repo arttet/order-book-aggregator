@@ -1,0 +1,22 @@
+[project]
+name = "order-book-aggregator"
+version = "0.1.0"
+description = "Aggregates and processes BTC-USD order book data from multiple cryptocurrency exchanges"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = ["aiohttp>=3.12.15", "orjson>=3.11.3"]
+
+[project.scripts]
+order-book-aggregator = "order_book_aggregator.__main__:main"
+
+[dependency-groups]
+dev = [
+    "isort>=6.0.1",
+    "pip-audit>=2.9.0",
+    "pytest>=8.4.2",
+    "pytest-asyncio>=1.2.0",
+    "pytest-benchmark[histogram]>=5.1.0",
+    "pytest-cov>=7.0.0",
+    "ruff>=0.13.2",
+    "ty>=0.0.1a21",
+]
