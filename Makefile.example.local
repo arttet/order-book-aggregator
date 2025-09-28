@@ -1,0 +1,5 @@
+# TEST_EXTRA_ARGS = --cov-report=html --capture=no
+# BENCH_EXTRA_ARGS = --benchmark-min-rounds=10
+
+# SCRIPT_EXTRA_ARGS = --help
+# SCRIPT_EXTRA_ARGS = --qty 5
