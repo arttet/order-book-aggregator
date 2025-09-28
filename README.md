@@ -13,6 +13,7 @@ Before installing the `order-book-aggregator` package, you need to have `uv` ins
 Once `uv` is installed, run:
 
 ```sh
+uv sync --frozen
 uv pip install .
 ```
 
